@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ExamenTecnico.Models.Cargo>
+
+@{
+    ViewData["Title"] = "CRUD";
+}
+
+<div class="row">
+    <!-- Panel Lateral con Descripción -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                Ejercicio 3
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Hacer un Crud en MVC de la siguiente tabla listar los datos en una grilla.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculadora Principal -->
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                CRUD de Cargos
+            </div>
+            <div class="card-body">
+                <p>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cargoModal" onclick="openCreateModal()"> Nuevo </button>
+                </p>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Valor del Cargo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.IdCargo</td>
+                                    <td>@item.ValorCargo</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#cargoModal" onclick="openEditModal(@item.IdCargo)">
+                                            Editar
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="@item.IdCargo">
+                                            Eliminar
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3" class="text-center">No hay registros disponibles.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="cargoModal" tabindex="-1" aria-labelledby="cargoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cargoModalLabel">Cargo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="cargoForm">
+                    <input type="hidden" id="idCargo" name="idCargo" />
+                    <div class="mb-3">
+                        <label for="valorCargo" class="form-label">Valor del Cargo</label>
+                        <input type="text" class="form-control" id="valorCargo" name="valorCargo" required />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="saveCargo">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/cargo.js"></script>

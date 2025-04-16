@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Calculadora";
+}
+
+<div class="row">
+    <!-- Panel Lateral con Descripción -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                Ejercicio 1
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Crear una calculadora web usando (HTML, JavaScript y CSS), en un caja de texto que reciba los siguientes caracteres +,-,*,/,(), y números de manera dinámica. Al presionar sobre el botón ejecutar se obtendrá el resultado, el cual es guardado en una lista HTML.
+                </p>
+            </div>
+        </div>
+        <div class="card shadow-sm mt-2">
+            <div class="card-header bg-primary text-white">
+                Ejercicio 2
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    A) Al cerrar la página, el último cálculo deberá quedar guardado en memoria, para que cuando se abra nuevamente la página se muestre en un div el último cálculo (recuperar el dato sin conectarse a una base de datos).
+                </p>
+                <p class="card-text">
+                    B)Todos los cálculos generados  deben ser guardados en una base de datos SQL Server , estos datos deberán ser registrados en una sola  conexión.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculadora Principal -->
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                Calculadora Web
+            </div>
+            <div class="card-body">
+                <div class="d-flex gap-2 mb-3">
+                    <input type="text" id="expression" class="form-control form-control-lg flex-grow-1" placeholder="Ingresa tu expresión aquí (ej: 1+2*(3-1))">
+                    <button id="btnEjecutar" class="btn btn-primary btn-lg">Ejecutar</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="mb-3">Historial de Resultados</h6>
+                        <ul id="resultados" class="list-group"></ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="mb-3">Último Valor</h6>
+                        <div id="ultimoValor" class="alert alert-info" role="alert">
+                            No hay cálculos previos.
+                        </div>
+                        <button id="btnGuardar" class="btn btn-primary btn-lg">Gurdar Cálculos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="~/js/calculadora.js"></script>
